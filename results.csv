@@ -1,0 +1,20 @@
+Hours_Studied,Previous_Scores,Attendance,Tutoring_Sessions,School_Type,Teacher_Quality,Gender,Sleep_Hours,Internet_Access,Learning_Disabilities,Physical_Activity,Distance_from_Home,Parental_Involvement,Parental_Education_Level,Family_Income,Access_to_Resources,Motivation_Level,Peer_Influence,Extracurricular_Activities,Study_Attendance_Interaction,Previous_Scores_Binned,Predicted_Class,Confidence,Predicted_Grade
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,850.0,Medium,Second Class Upper,88.67,
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,1,Near,Low,College,Low,Low,Low,Negative,No,,,,91.33,Second Class Upper
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,1,Near,Low,College,Low,Low,Low,Negative,No,,,,91.33,Second Class Upper
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,1,Near,Low,College,Low,Low,Low,Negative,No,,,,91.33,Second Class Upper
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,1,Near,Low,College,Low,Low,Low,Negative,No,,,,91.33,Second Class Upper
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,1,Near,Low,College,Low,Low,Medium,Negative,No,,,,94.0,Second Class Upper
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,88.67,Second Class Upper
+0,0.0,12,0,Private,Low,Male,12,No,Yes,0,Far,Low,College,Low,Low,Low,Positive,Yes,,,,46.0,Second Class Lower
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,88.67,Second Class Upper
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,88.67,Second Class Upper
+10,0.0,85,2,Private,Low,Female,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,88.67,Second Class Upper
+0,0.0,0,2,Private,Low,Female,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,53.33,Second Class Upper
+0,0.0,0,2,Private,Low,Female,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Positive,Yes,,,,52.0,Second Class Upper
+0,0.0,0,2,Private,Low,Female,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Positive,Yes,,,,52.0,Second Class Upper
+10,70.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,91.0,Second Class Lower
+10,50.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,85.0,Second Class Lower
+10,12.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,85.0,Second Class Lower
+10,12.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,85.0,Second Class Lower
+10,10.0,85,2,Private,Low,Male,7,Yes,Yes,0,Near,Low,College,Low,Low,Low,Negative,No,,,,89.33,Second Class Upper
