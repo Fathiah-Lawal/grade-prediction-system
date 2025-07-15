@@ -174,3 +174,8 @@ cython_debug/
 
 # Streamlit
 .streamlit/
+
+.streamlit/secrets.toml
+__pycache__/
+*.pyc
+.env
