@@ -9,11 +9,11 @@ def connect_to_db():
         # Check if running on Streamlit Cloud with secrets
         if hasattr(st.secrets, "database"):
             return mysql.connector.connect(
-                host=st.secrets.database.host,
-                user=st.secrets.database.user,
-                password=st.secrets.database.password,
-                database=st.secrets.database.database,
-                port=st.secrets.database.get("port", 3306)
+                host=st.secrets["database"]["host"],
+                user=st.secrets["database"]["user"],
+                password=st.secrets["database"]["password"],
+                database=st.secrets["database"]["database"],
+                port=int(st.secrets["database"].get("port", 3306))  # Use .get here
             )
         else:
             # Fallback for local development
@@ -23,9 +23,10 @@ def connect_to_db():
                 password="pass123",
                 database="grade_prediction"
             )
-    except Error as e:
+    except mysql.connector.Error as e:
         st.error(f"Database connection failed: {e}")
         return None
+
 
 # Create users table
 def create_users_table():
