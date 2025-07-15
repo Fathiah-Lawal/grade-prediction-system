@@ -15,6 +15,13 @@ from db import connect_to_db, create_users_table, add_user, authenticate_user, i
 from feedback_utils import generate_feedback
 from admin import admin_dashboard, manage_users, all_predictions
 
+import streamlit as st
+from db import init_database
+
+# Initialize database on app start
+init_database()
+
+# Rest of your app code...
 # Import augmentation functions
 try:
     from augment_data import (
