@@ -12,7 +12,7 @@ def admin_dashboard():
         st.error("Access denied. Admins only.")
         return
 
-    st.header("📊 Admin Dashboard")
+    st.header("Admin Dashboard")
 
     # Get user count from database
     conn = connect_to_db()
@@ -57,7 +57,7 @@ def manage_users():
     st.header("👥 Manage Users")
 
     # --- Filters ---
-    with st.expander("🔍 Search & Filter", expanded=True):
+    with st.expander("Search & Filter", expanded=True):
         search_query = st.text_input("Search by email:")
         role_filter = st.selectbox("Filter by role:", ["All", "Student", "Educator"])
 
@@ -207,7 +207,7 @@ def all_predictions():
         st.dataframe(file_info_df, use_container_width=True)
         
         # Display the main data with filters
-        st.markdown("### 📋 All Predictions")
+        st.markdown("### All Predictions")
         
         # Add filters
         col1, col2 = st.columns(2)
@@ -270,7 +270,7 @@ def all_predictions():
         # Download option
         csv_data = combined_df.to_csv(index=False)
         st.download_button(
-            label="📥 Download All Predictions",
+            label="Download All Predictions",
             data=csv_data,
             file_name=f"all_predictions_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
             mime='text/csv'
@@ -280,7 +280,7 @@ def all_predictions():
         st.error(f"Error loading predictions: {str(e)}")
         
         # Debug information
-        with st.expander("🔍 Show Error Details"):
+        with st.expander("Show Error Details"):
             st.write("**Error details:**")
             st.write(str(e))
             

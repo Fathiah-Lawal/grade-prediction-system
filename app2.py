@@ -249,7 +249,7 @@ def auth_app():
 # 🚀 NEW: Data Management Section for Educators
 def data_management_section():
     st.markdown('<div class="admin-section">', unsafe_allow_html=True)
-    st.subheader("🔧 Data Management & Model Training")
+    st.subheader("Data Management & Model Training")
     
     # Check current model info
     current_model = getattr(st.session_state, 'current_model_file', 'Unknown')
@@ -267,7 +267,7 @@ def data_management_section():
     
     # Data augmentation section
     if AUGMENTATION_AVAILABLE:
-        st.markdown("### 🚀 Data Augmentation & Model Training")
+        st.markdown("### Data Augmentation & Model Training")
         
         col1, col2 = st.columns(2)
         with col1:
@@ -586,7 +586,7 @@ def main_app():
             return
 
     st.title("🎓 Grade Prediction System")
-    tabs = st.tabs(["🔮 Predict Grade", "📊 Results", "🔄 What-If", "💡 Feedback"])
+    tabs = st.tabs(["Predict Grade", "Results", "What-If", "Feedback"])
 
     # --- Tab: Predict Grade ---
     with tabs[0]:
@@ -605,7 +605,7 @@ def main_app():
             school_type = st.selectbox("School Type", ["Private", "Public"], key="school_type")
 
         # Personal Info
-        st.markdown("### 👤 Personal Information")
+        st.markdown("### Personal Information")
         col1, col2 = st.columns(2)
         with col1:
             gender = st.selectbox("Gender", ["Male", "Female", "Other"])
@@ -617,7 +617,7 @@ def main_app():
             distance_from_home = st.selectbox("Distance from Home to School (km)", ["Near", "Moderate", "Far"])
 
         # Environmental Factors
-        st.markdown("### 🏡 Environmental Factors")
+        st.markdown("### Environmental Factors")
         col1, col2 = st.columns(2)
         with col1:
             parental_involvement = st.selectbox("Parental Involvement", ["Low", "Medium", "High"])
@@ -627,7 +627,7 @@ def main_app():
             access_to_resources = st.selectbox("Access to Learning Resources", ["Low", "Medium", "High"])
 
         # Behavioral Factors
-        st.markdown("### 💬 Behavioral Factors")
+        st.markdown("### Behavioral Factors")
         col1, col2 = st.columns(2)
         with col1:
             motivation_level = st.selectbox("Motivation Level", ["Low", "Medium", "High"])
@@ -674,7 +674,7 @@ def main_app():
                     predicted_class = model.classes_[predicted_idx]
                     confidence = round(prediction_proba[predicted_idx] * 100, 2)
 
-                    st.markdown(f"### 🧠 Predicted Grade Classification: **{predicted_class}**")
+                    st.markdown(f"### Predicted Grade Classification: **{predicted_class}**")
                     st.markdown(f"**Confidence Score:** {confidence}%")
 
                     # Show probability distribution
@@ -701,7 +701,7 @@ def main_app():
                         st.info(f"**Grade Meaning:** {grade_info[predicted_class]}")
 
                     # Show feedback tips
-                    st.markdown("### 🔍 Suggested Improvements:")
+                    st.markdown("### Suggested Improvements:")
                     feedback_tips = generate_feedback(predicted_class, input_dict)
                     if isinstance(feedback_tips, list):
                         for tip in feedback_tips:
@@ -746,7 +746,7 @@ def main_app():
 
     # 🚀 OPTIMIZATION 7: Optimized Results Tab
     with tabs[1]:
-        st.subheader("📊 Prediction History")
+        st.subheader(" Prediction History")
         
         # Use cached data loading
         df = load_user_results(st.session_state.user_email)
@@ -758,7 +758,7 @@ def main_app():
             
             # Show grade distribution if we have the column
             if 'Predicted_Grade' in df.columns:
-                st.markdown("### 📈 Your Grade Distribution")
+                st.markdown("### Your Grade Distribution")
                 grade_counts = df['Predicted_Grade'].value_counts()
                 fig = px.pie(values=grade_counts.values, names=grade_counts.index, 
                            title="Distribution of Your Predicted Grades")
@@ -777,7 +777,7 @@ def main_app():
                     st.metric("Most Common Grade", most_common)
             
             st.download_button(
-                label="📥 Download All Results",
+                label="Download All Results",
                 data=df.to_csv(index=False),
                 file_name=f"predictions_{st.session_state.user_email}.csv",
                 mime='text/csv'
