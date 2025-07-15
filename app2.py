@@ -585,7 +585,7 @@ def main_app():
             unsupervised_analytics_section()
             return
 
-    st.title("🎓 Grade Prediction System")
+    st.title("Grade Prediction System")
     tabs = st.tabs(["Predict Grade", "Results", "What-If", "Feedback"])
 
     # --- Tab: Predict Grade ---
