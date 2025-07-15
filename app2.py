@@ -207,44 +207,8 @@ st.markdown(get_custom_css(), unsafe_allow_html=True)
 
 # 🚀 OPTIMIZATION 5: Streamlined auth function
 def auth_app():
-    st.title("EduPredict - Authentication")
-    
-    action = st.selectbox("Choose Action", ["Login", "Sign Up"])
-    email = st.text_input("Email")
-    password = st.text_input("Password", type="password")
-
-    if action == "Sign Up":
-        role = st.radio("Select Role", ["Student", "Educator"])
-        if st.button("Sign Up"):
-            if email and password:
-                if add_user(email, password, role):
-                    st.success("Account created successfully!")
-                    st.session_state.update({
-                        'logged_in': True,
-                        'user_email': email,
-                        'user_role': role
-                    })
-                    st.rerun()
-                else:
-                    st.error("Email already exists or registration failed.")
-            else:
-                st.error("Please fill in all fields.")
-    else:
-        if st.button("Login"):
-            if email and password:
-                user = authenticate_user(email, password)
-                if user:
-                    st.success(f"Welcome back!")
-                    st.session_state.update({
-                        'logged_in': True,
-                        'user_email': user['email'],
-                        'user_role': user['role']
-                    })
-                    st.rerun()
-                else:
-                    st.error("Invalid credentials.")
-            else:
-                st.error("Please enter both email and password.")
+    from forget_password import enhanced_auth_app
+    enhanced_auth_app()
 
 # 🚀 NEW: Data Management Section for Educators
 def data_management_section():
