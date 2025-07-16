@@ -50,7 +50,8 @@ def generate_feedback(predicted_class: str, input_dict: dict) -> str:
 
         # Handle common error formats
         if "candidates" not in result:
-            return f"⚠️ Gemini error: {result.get('error', {}).get('message', 'Unknown issue')}"
+            return f"⚠️ Gemini error: {json.dumps(result, indent=2)}"
+
 
         feedback = result["candidates"][0]["content"]["parts"][0]["text"]
         feedback = feedback.strip()
