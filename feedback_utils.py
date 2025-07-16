@@ -1,20 +1,19 @@
 # feedback_utils.py
 import re
-from ollama import Client
+import streamlit as st
+import os
+import requests
+import json
 
-# Initialize Ollama client 
-ollama_client = Client()
+# Get Gemini API key
+GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY") or os.environ.get("GEMINI_API_KEY")
+
+# Gemini endpoint for chat-style prompt
+GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={GEMINI_API_KEY}"
 
 def generate_feedback(predicted_class: str, input_dict: dict) -> str:
     """
     Generate actionable feedback for a student based on predicted grade and input features.
-
-    Parameters:
-    - predicted_class (str): The predicted grade/class of the student.
-    - input_dict (dict): Dictionary containing student features.
-
-    Returns:
-    - feedback (str): A string containing 3 specific actionable tips.
     """
 
     prompt = (
@@ -30,28 +29,30 @@ def generate_feedback(predicted_class: str, input_dict: dict) -> str:
         f"Motivation Level: {input_dict.get('Motivation_Level', 'N/A')}\n"
         f"Peer Influence: {input_dict.get('Peer_Influence', 'N/A')}\n"
         f"Access to Resources: {input_dict.get('Access_to_Resources', 'N/A')}\n\n"
-        "Please provide 3 concise, actionable tips to help this student improve their performance. Talk to the student like you're interacting with him/her personally"
+        "Please provide 3 concise, actionable tips to help this student improve their performance. Talk to the student like you're interacting with him/her personally."
     )
 
+    headers = {
+        "Content-Type": "application/json"
+    }
+
+    data = {
+        "contents": [
+            {
+                "parts": [{"text": prompt}]
+            }
+        ]
+    }
+
     try:
-        response = ollama_client.chat(
-            model="llama3",
-            messages=[{"role": "user", "content": prompt}]
-        )
-        feedback = response['message']['content']
+        response = requests.post(GEMINI_API_URL, headers=headers, json=data)
+        result = response.json()
+        feedback = result["candidates"][0]["content"]["parts"][0]["text"]
     except Exception as e:
-        return f"Error generating feedback: {e}"
+        return f"❌ Error generating feedback: {e}"
 
-    # Debug print of raw response; remove or comment out in production
-    print("RAW FEEDBACK:", repr(feedback))
-
-   # Fix vertical text if it's likely character-separated
-    lines = feedback.splitlines()
-    if sum(len(line.strip()) <= 2 for line in lines) > len(lines) * 0.5:
-        feedback = feedback.replace('\n', '')
-
-
-    # Then collapse multiple blank lines to a single blank line
-    feedback = re.sub(r'\n{2,}', '\n\n', feedback).strip()
+    # Clean up feedback
+    feedback = feedback.strip()
+    feedback = re.sub(r'\n{2,}', '\n\n', feedback)
 
     return feedback
